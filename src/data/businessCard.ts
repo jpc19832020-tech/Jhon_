@@ -76,11 +76,6 @@ export interface InsightsConfig {
     title: string;
     bullets: string[];
   };
-  strategy: {
-    badge: string;
-    description: string;
-    items: Array<{ title: string; description: string }>;
-  };
 }
 
 export interface ClosingConfig {
@@ -129,24 +124,19 @@ export const businessCardConfig: BusinessCardConfig = {
     logoImage: `${basePath}imagenes/Foton-logo-01.png`,
     profileImage: {
       src: `${basePath}imagenes/otras fotos/JP.1.png`,
-      alt: "Retrato profesional de Jhon Carlos Pérez Cubas",
+      alt: "Foto de perfil de Jhon Carlos",
     },
   },
   hero: {
-    badge: "Foton Business Card",
+    badge: "FOTON Perú",
     name: "Jhon Carlos Pérez Cubas",
-    title: "Business Manager - Foton International Trade Co., Ltd.",
+    title: "Gerente comercial - Perú | FOTON",
     companyName: "Foton International Trade Co., Ltd.",
-    companyDescription: "Oficina de representación para proyectos estratégicos en Perú y Latinoamérica.",
+    companyDescription:
+      "Estrategia comercial & Representación de Marca.",
     addresses: [
-      {
-        label: "HQ Oficina Central Beijing:",
-        value: "No.15, Shayang Road, Shahe, Changping District, Beijing 102206",
-      },
-      {
-        label: "FOTON Internacional (Perú):",
-        value: "Av. Guardia Civil 1321, Int. 802, Surquillo, Lima",
-      },
+      { label: "Dirección Beijing", value: "No.15, Shayang Rd., Changping, Beijing 102206, China" },
+      { label: "Dirección Lima", value: "Av. Guardia civil 1321, Int. 802, Surquillo, Lima, Perú" },
     ],
     tags: [
       { label: "Perú", variant: "default" },
@@ -190,7 +180,8 @@ export const businessCardConfig: BusinessCardConfig = {
       },
     ],
     whatsappNumber: "51937375605",
-    whatsappMessage: "Hola Jhon, vi tu tarjeta de presentación y me gustaría contactarte.",
+    whatsappMessage:
+      "Hola Jhon, vi tu tarjeta de presentación y me gustaría contactarte.",
     email: {
       address: "jhoncarlosperezcubas@gmail.com",
       subject: "Consulta - Tarjeta FOTON",
@@ -240,7 +231,7 @@ export const businessCardConfig: BusinessCardConfig = {
   },
   insights: {
     company: {
-      subtitle: "FOTON en la región",
+      subtitle: "FOTON",
       title: "Innovación y soporte integral",
       bullets: [
         "Cadena de suministro optimizada para proyectos industriales, minería y construcción.",
@@ -248,24 +239,10 @@ export const businessCardConfig: BusinessCardConfig = {
         "Red global de repuestos y servicios con presencia en más de 110 países.",
       ],
     },
-    strategy: {
-      badge: "Actualidad 2025",
-      description: "Estrategias comerciales y alianzas estratégicas para el portafolio FOTON en Perú.",
-      items: [
-        {
-          title: "Enfoque",
-          description: "Movilidad sostenible para segmentos de carga pesada y ligera.",
-        },
-        {
-          title: "Cobertura",
-          description: "Lima y principales corredores logísticos nacionales.",
-        },
-      ],
-    },
   },
   closing: {
-    title: "",
-    description: "",
+    title: "Compromiso con cada entrega",
+    description: "Construyamos juntos soluciones de transporte confiables para tu negocio.",
     image: {
       src: `${basePath}imagenes/otras fotos/GF1.jpeg`,
       alt: "Equipo comercial de FOTON internacional reunido",
@@ -285,3 +262,4 @@ export const businessCardConfig: BusinessCardConfig = {
     downloadName: "Jhon_Carlos_Perez_Cubas.vcf",
   },
 };
+

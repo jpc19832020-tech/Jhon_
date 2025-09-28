@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useState } from "react";
+﻿import { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { ChevronLeft, ChevronRight, Sparkles, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import type { GalleryConfig } from "@/data/businessCard";
+import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 
 interface GalleryModalProps {
   isOpen: boolean;
@@ -14,6 +15,7 @@ interface GalleryModalProps {
 
 const GalleryModal = ({ isOpen, initialIndex, data, onClose }: GalleryModalProps) => {
   const [activeIndex, setActiveIndex] = useState(initialIndex);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     if (isOpen) {
@@ -22,7 +24,6 @@ const GalleryModal = ({ isOpen, initialIndex, data, onClose }: GalleryModalProps
   }, [initialIndex, isOpen]);
 
   const totalSlides = data.slides.length;
-  
 
   const goToPrevious = useCallback(() => {
     setActiveIndex((index) => (index - 1 + totalSlides) % totalSlides);
@@ -33,13 +34,13 @@ const GalleryModal = ({ isOpen, initialIndex, data, onClose }: GalleryModalProps
   }, [totalSlides]);
 
   useEffect(() => {
-    if (!isOpen || totalSlides <= 1) {
+    if (!isOpen || totalSlides <= 1 || prefersReducedMotion) {
       return;
     }
 
     const autoPlayTimer = window.setInterval(goToNext, 5000);
     return () => window.clearInterval(autoPlayTimer);
-  }, [goToNext, isOpen, totalSlides]);
+  }, [goToNext, isOpen, prefersReducedMotion, totalSlides]);
 
   if (!isOpen) {
     return null;
@@ -67,13 +68,18 @@ const GalleryModal = ({ isOpen, initialIndex, data, onClose }: GalleryModalProps
               src={image.src}
               alt={image.alt}
               className={cn(
-                "absolute inset-0 h-full w-full object-cover transition-opacity duration-500",
-                index === activeIndex ? "opacity-100" : "opacity-0",
+                "absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ease-out",
+                index === activeIndex
+                  ? "opacity-100 motion-safe:animate-gallery-zoom"
+                  : "opacity-0",
               )}
               loading={index === 0 ? "eager" : "lazy"}
             />
           ))}
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-black/80 via-black/35 to-transparent sm:h-[36%] md:h-[32%]"
+          />
 
           {data.cta ? (
             <Button

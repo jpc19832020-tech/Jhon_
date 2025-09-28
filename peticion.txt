@@ -1,0 +1,44 @@
+Solicitudes:
+
+Imagen final (bloque inferior) – no se muestra
+
+Asegurar que la imagen ubicada debajo de todo se renderice y sea visible
+Evitar que quede oculta por estilos/overlays/footers o por la forma en que se está cargando.
+
+Entregar con texto alternativo y comportamiento de carga correcto para que siempre aparezca.
+
+Animación suave en las fotos
+
+Agregar una transición fluida de acercamiento (zoom-in) con desvanecido al mostrar las fotos, para que no aparezcan de golpe.
+
+Debe sentirse natural al abrir la vista y al cambiar de imagen, sin parpadeos.
+
+Desactivar animaciones si el usuario tiene activado reduced motion.
+
+Galería – Ajuste del degradado
+
+Ajustar el degradado superpuesto en las imágenes de la galería para que no tape la foto y mantenga la legibilidad del contenido.
+
+Necesito que la web tenga una versión adaptada a celulares. Hoy el contenido se ve “partido” y no entra en la pantalla. Por favor:
+
+Reorganicen el layout para móvil de modo que los módulos se acomoden en columna y el usuario pueda deslizar verticalmente para ver todo, sin recortes.
+
+Aseguren que no exista scroll horizontal y que ningún elemento (headers, overlays, footers, degradados) tape el contenido.
+
+Priorizamos que se vea todo (textos, imágenes, CTA, formulario/contacto) y que los botones sean fáciles de tocar.
+
+La galería y modales deben verse a pantalla completa en móvil y ser fáciles de cerrar.
+
+Ajusten imágenes y textos para que escale correctamente en pantallas pequeñas y mantenga legibilidad.
+
+Criterios de aceptación:
+
+En teléfonos (iOS y Android), la página se ve completa sin cortes y se navega solo con scroll vertical.
+
+Sin scroll horizontal en ninguna sección.
+
+CTA/contacto visibles y utilizables sin zoom.
+
+Galería y modales funcionan correctamente y no tapan contenido.
+
+La imagen final del pie se ve completa y no queda cubierta por otros elementos.

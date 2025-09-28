@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import type { GalleryConfig } from "@/data/businessCard";
+import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 
 interface GalleryProps {
   data: GalleryConfig;
@@ -13,6 +14,7 @@ const Gallery = ({ data, onImageClick }: GalleryProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [showOverlay, setShowOverlay] = useState(true);
   const totalSlides = data.slides.length;
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   const goToPrevious = useCallback(() => {
     setActiveIndex((index) => (index - 1 + totalSlides) % totalSlides);
@@ -23,18 +25,23 @@ const Gallery = ({ data, onImageClick }: GalleryProps) => {
   }, [totalSlides]);
 
   useEffect(() => {
+    if (prefersReducedMotion) {
+      setShowOverlay(false);
+      return undefined;
+    }
+
     const overlayTimer = window.setTimeout(() => setShowOverlay(false), 3200);
     return () => window.clearTimeout(overlayTimer);
-  }, []);
+  }, [prefersReducedMotion]);
 
   useEffect(() => {
-    if (totalSlides <= 1) {
+    if (totalSlides <= 1 || prefersReducedMotion) {
       return;
     }
 
     const autoPlayTimer = window.setInterval(goToNext, 5000);
     return () => window.clearInterval(autoPlayTimer);
-  }, [goToNext, totalSlides]);
+  }, [goToNext, prefersReducedMotion, totalSlides]);
 
   const handleImageClick = useCallback(() => {
     if (onImageClick) {
@@ -79,13 +86,15 @@ const Gallery = ({ data, onImageClick }: GalleryProps) => {
             src={image.src}
             alt={image.alt}
             className={cn(
-              "absolute inset-0 h-full w-full cursor-zoom-in object-cover transition-opacity duration-500",
-              index === activeIndex ? "opacity-100" : "opacity-0",
+              "absolute inset-0 h-full w-full cursor-zoom-in object-cover transition-opacity duration-500 ease-out",
+              index === activeIndex
+                ? "opacity-100 motion-safe:animate-gallery-zoom"
+                : "opacity-0",
             )}
             loading={index === 0 ? "eager" : "lazy"}
           />
         ))}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-black/80 via-black/35 to-transparent sm:h-[40%]" />
 
         {showOverlay && (
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/60">

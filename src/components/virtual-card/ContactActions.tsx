@@ -1,4 +1,4 @@
-import type { ComponentType, SVGProps } from "react";
+﻿import type { ComponentType, SVGProps } from "react";
 import { ArrowUpRight, Download, Globe, Mail, Phone, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -94,3 +94,4 @@ const ContactActions = ({ actions, sectionLabel, quickActions, onDownload, onSha
 
 export type { ContactButtonData };
 export default ContactActions;
+

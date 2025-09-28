@@ -173,13 +173,13 @@ const VirtualBusinessCard = () => {
         </div>
       )}
 
-      <div className="relative mx-auto flex min-h-screen max-w-6xl items-center px-4 py-12 sm:px-8 lg:px-10">
-        <Card className="w-full overflow-hidden bg-white text-black shadow-2xl">
-          <div className="flex items-center gap-4 bg-primary/95 px-6 py-4 text-white">
+      <div className="relative mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 py-12 sm:px-8 lg:px-10 lg:py-16">
+        <Card className="relative z-10 w-full overflow-hidden bg-white text-black shadow-2xl">
+          <div className="flex flex-wrap items-center gap-4 bg-primary/95 px-6 py-4 text-white sm:flex-nowrap">
             <img
               src={assets.profileImage.src}
               alt={assets.profileImage.alt}
-              className="h-20 w-20 rounded-full border-4 border-white/40 object-cover shadow-lg cursor-zoom-in"
+              className="h-20 w-20 cursor-zoom-in rounded-full border-4 border-white/40 object-cover shadow-lg sm:h-24 sm:w-24"
               loading="eager"
               onClick={handleProfileImageClick}
             />
@@ -189,7 +189,7 @@ const VirtualBusinessCard = () => {
             </div>
           </div>
 
-          <CardContent className="px-6 py-10 sm:px-10 lg:px-14 lg:py-12">
+          <CardContent className="px-6 py-8 sm:px-10 lg:px-14 lg:py-12">
             <div className="grid gap-12 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)]">
               <section className="space-y-10">
                 <Hero data={hero} />
@@ -213,7 +213,7 @@ const VirtualBusinessCard = () => {
             <img
               src={closing.image.src}
               alt={closing.image.alt}
-              className="h-56 w-full object-cover sm:h-64"
+              className="h-56 w-full object-cover sm:h-64 lg:h-72"
               loading="lazy"
             />
           </div>
@@ -228,7 +228,7 @@ const VirtualBusinessCard = () => {
       />
 
       {isProfileImageOpen && (
-        <div 
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
           onClick={() => setIsProfileImageOpen(false)}
         >
