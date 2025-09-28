@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import ContactActions, { type ContactButtonData } from "@/components/virtual-card/ContactActions";
 import Gallery from "@/components/virtual-card/Gallery";
 import GalleryModal from "@/components/virtual-card/GalleryModal";
-import Hero from "@/components/virtual-card/Hero";
+import Hero, { RepresentativePanel } from "@/components/virtual-card/Hero";
 import Insights from "@/components/virtual-card/Insights";
 import { businessCardConfig } from "@/data/businessCard";
 
@@ -193,6 +193,7 @@ const VirtualBusinessCard = () => {
             <div className="grid gap-12 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)]">
               <section className="space-y-10">
                 <Hero data={hero} />
+                <RepresentativePanel data={hero.specialization} />
                 <ContactActions
                   actions={contactActions}
                   sectionLabel={contact.sectionLabel}
@@ -200,11 +201,11 @@ const VirtualBusinessCard = () => {
                   onDownload={handleDownloadVCard}
                   onShare={handleShare}
                 />
+                <Insights data={insights} logoImage={assets.logoImage} />
               </section>
 
               <aside className="space-y-8">
                 <Gallery data={gallery} onImageClick={handleImageClick} />
-                <Insights data={insights} logoImage={assets.logoImage} />
               </aside>
             </div>
           </CardContent>
