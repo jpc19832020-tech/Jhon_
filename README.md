@@ -8,7 +8,7 @@ Single Page Application built with Vite + React + TypeScript for the digital car
 - Responsive layout with photographic background, translucent cards, and smooth transitions.
 - Smart actions: WhatsApp with preset message, Gmail compose, website link, vCard download, and share fallback.
 - Gallery with autoplay controls, indicators, and an overlay intro.
-- GitHub Pages ready: base path `/JhonPerez/`, deploy script with `gh-pages`.
+- GitHub Pages ready: base path `/Jhon_/`, deployed via GitHub Actions.
 
 ### Install
 ```
@@ -20,13 +20,17 @@ npm install
 - `npm run lint` - run ESLint
 - `npm run build` - generate static output in `dist/`
 - `npm run preview` - serve `dist/` (after build)
-- `npm run deploy` - build and publish `dist/` to the `gh-pages` branch (runs `predeploy` automatically)
 
-### Deploy to GitHub Pages
-1. Ensure the repository on GitHub is named `JhonPerez` or override the base path in `vite.config.ts`.
-2. Run `npm run deploy` to publish the production build to the `gh-pages` branch.
-3. In GitHub, configure Pages to use the `gh-pages` branch with the root folder (`/`).
-4. Update `index.html` metadata (`og:url`) and optionally set `VITE_BASE_PATH` before building if your repo name changes.
+Deployment is handled by GitHub Actions (no `gh-pages` branch or `npm run deploy`).
+
+### Deploy to GitHub Pages (GitHub Actions)
+This repo uses the Pages workflow in `.github/workflows/pages.yml`.
+
+1. Create/point the remote to `https://github.com/jpc19832020-tech/Jhon_.git` and push `main`.
+2. In GitHub: Settings → Pages → Build and deployment = GitHub Actions.
+3. On each push to `main`, Actions will install deps, build, and deploy `dist/` to Pages.
+4. Base path is set to `/Jhon_/` in `vite.config.ts`. If the repo name changes, update `base` or set `VITE_BASE_PATH`.
+5. Update `index.html` metadata (`og:url`) to the final Pages URL.
 
 ### Relevant Structure
 ```
