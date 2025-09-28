@@ -16,9 +16,11 @@ const Hero = ({ data }: HeroProps) => {
   return (
     <div className="space-y-6">
       <header className="space-y-4">
-        <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-primary">
-          {data.badge}
-        </div>
+        {data.badge ? (
+          <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-primary">
+            {data.badge}
+          </div>
+        ) : null}
         <div className="space-y-2">
           <h1 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
             {data.title}
