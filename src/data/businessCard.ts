@@ -1,4 +1,4 @@
-const basePath = import.meta.env.BASE_URL;
+﻿const basePath = import.meta.env.BASE_URL;
 
 export type ContactActionKey = "phone" | "email" | "website";
 export type ContactActionIcon = "Phone" | "Mail" | "Globe";
@@ -128,20 +128,19 @@ export const businessCardConfig: BusinessCardConfig = {
     },
   },
   hero: {
-    badge: "FOTON Perú",
-    name: "Jhon Carlos Pérez Cubas",
-    title: "Gerente comercial - Perú | FOTON",
+    badge: "",
+    name: "Jhon Carlos P├⌐rez Cubas",
+    title: "Gerente comercial - Per├║ | FOTON",
     companyName: "Foton International Trade Co., Ltd.",
     companyDescription:
-      "Estrategia comercial & Representación de Marca.",
+      "Estrategia comercial & Representaci├│n de Marca.",
     addresses: [
-      { label: "Dirección Beijing", value: "No.15, Shayang Rd., Changping, Beijing 102206, China" },
-      { label: "Dirección Lima", value: "Av. Guardia civil 1321, Int. 802, Surquillo, Lima, Perú" },
+      { label: "Direcci├│n Beijing", value: "No.15, Shayang Rd., Changping, Beijing 102206, China" },
+      { label: "Direcci├│n Lima", value: "Av. Guardia civil 1321, Int. 802, Surquillo, Lima, Per├║" },
     ],
     tags: [
-      { label: "Perú", variant: "default" },
+      { label: "Per├║", variant: "default" },
       { label: "Lima", variant: "outline", icon: "MapPin" },
-      { label: "Desde 2017", variant: "outline", icon: "CalendarClock" },
     ],
     specialization: {
       label: "Representante",
@@ -159,7 +158,7 @@ export const businessCardConfig: BusinessCardConfig = {
     actions: [
       {
         key: "phone",
-        label: "Teléfono",
+        label: "Tel├⌐fono",
         detail: "+51 937 375 605",
         icon: "Phone",
         feedback: "Abriendo WhatsApp",
@@ -181,11 +180,11 @@ export const businessCardConfig: BusinessCardConfig = {
     ],
     whatsappNumber: "51937375605",
     whatsappMessage:
-      "Hola Jhon, vi tu tarjeta de presentación y me gustaría contactarte.",
+      "Hola Jhon, vi tu tarjeta de presentaci├│n y me gustar├¡a contactarte.",
     email: {
       address: "jhoncarlosperezcubas@gmail.com",
       subject: "Consulta - Tarjeta FOTON",
-      body: "Hola Jhon,\n\nTe contacto desde tu tarjeta de presentación.\n\nGracias,",
+      body: "Hola Jhon,\n\nTe contacto desde tu tarjeta de presentaci├│n.\n\nGracias,",
     },
     websiteUrl: "https://www.fotonmotor.com",
     quickActions: {
@@ -193,8 +192,8 @@ export const businessCardConfig: BusinessCardConfig = {
       shareLabel: "Compartir tarjeta",
     },
     shareMetadata: {
-      title: "Tarjeta Virtual FOTON - Jhon Carlos Pérez Cubas",
-      text: "Conoce la tarjeta de presentación virtual de Jhon Carlos Pérez Cubas (FOTON).",
+      title: "Tarjeta Virtual FOTON - Jhon Carlos P├⌐rez Cubas",
+      text: "Conoce la tarjeta de presentaci├│n virtual de Jhon Carlos P├⌐rez Cubas (FOTON).",
     },
     feedback: {
       download: "Descargando vCard de Jhon Carlos",
@@ -205,38 +204,38 @@ export const businessCardConfig: BusinessCardConfig = {
     },
   },
   gallery: {
-    overlayLabel: "Galería corporativa FOTON",
-    sectionTitle: "Galería",
+    overlayLabel: "Galer├¡a corporativa FOTON",
+    sectionTitle: "Galer├¡a",
     slides: [
       {
         src: `${basePath}imagenes/otras fotos/F1.jpeg`,
-        alt: "Camiones FOTON alineados frente a un centro logístico",
+        alt: "Camiones FOTON alineados frente a un centro log├¡stico",
         caption: "Soluciones de carga pesada adaptadas al mercado peruano.",
       },
       {
         src: `${basePath}imagenes/otras fotos/F2.jpg`,
-        alt: "Flota de vehículos ligeros FOTON en exhibición",
-        caption: "Eficiencia para transporte urbano y distribución de última milla.",
+        alt: "Flota de veh├¡culos ligeros FOTON en exhibici├│n",
+        caption: "Eficiencia para transporte urbano y distribuci├│n de ├║ltima milla.",
       },
       {
         src: `${basePath}imagenes/otras fotos/F3.jpg`,
-        alt: "Camión FOTON en carretera andina",
+        alt: "Cami├│n FOTON en carretera andina",
         caption: "Rendimiento comprobado en rutas de alta exigencia.",
       },
     ],
     cta: {
-      label: "Probar vista 720°",
+      label: "Probar vista 720┬░",
       url: "https://zhanting2023.foton.com.cn/p4_9/",
     },
   },
   insights: {
     company: {
       subtitle: "FOTON",
-      title: "Innovación y soporte integral",
+      title: "Innovaci├│n y soporte integral",
       bullets: [
-        "Cadena de suministro optimizada para proyectos industriales, minería y construcción.",
-        "Soporte técnico y capacitación personalizada para flotas en operación en Perú.",
-        "Red global de repuestos y servicios con presencia en más de 110 países.",
+        "Cadena de suministro optimizada para proyectos industriales, miner├¡a y construcci├│n.",
+        "Soporte t├⌐cnico y capacitaci├│n personalizada para flotas en operaci├│n en Per├║.",
+        "Red global de repuestos y servicios con presencia en m├ís de 110 pa├¡ses.",
       ],
     },
   },
@@ -249,17 +248,20 @@ export const businessCardConfig: BusinessCardConfig = {
     },
   },
   vcard: {
-    lastName: "Pérez Cubas",
+    lastName: "P├⌐rez Cubas",
     firstName: "Jhon Carlos",
-    fullName: "Jhon Carlos Pérez Cubas",
+    fullName: "Jhon Carlos P├⌐rez Cubas",
     organization: "Foton International Trade Co., Ltd.",
     title: "Business Manager",
     email: "jhoncarlosperezcubas@gmail.com",
     phone: "+51937375605",
     url: "https://www.fotonmotor.com",
     address: "No.15, Shayang Road, Shahe, Changping District, Beijing 102206, China",
-    note: "Tarjeta virtual de Jhon Carlos Pérez Cubas - Foton International Trade Co., Ltd.",
+    note: "Tarjeta virtual de Jhon Carlos P├⌐rez Cubas - Foton International Trade Co., Ltd.",
     downloadName: "Jhon_Carlos_Perez_Cubas.vcf",
   },
 };
+
+
+
 

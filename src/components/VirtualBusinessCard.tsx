@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import ContactActions, { type ContactButtonData } from "@/components/virtual-card/ContactActions";
 import Gallery from "@/components/virtual-card/Gallery";
 import GalleryModal from "@/components/virtual-card/GalleryModal";
-import Hero, { RepresentativePanel } from "@/components/virtual-card/Hero";
+import Hero, { RepresentativePanel, CompanyDetailsCard } from "@/components/virtual-card/Hero";
 import Insights from "@/components/virtual-card/Insights";
 import { businessCardConfig } from "@/data/businessCard";
 
@@ -201,11 +201,18 @@ const VirtualBusinessCard = () => {
                   onDownload={handleDownloadVCard}
                   onShare={handleShare}
                 />
-                <Insights data={insights} logoImage={assets.logoImage} />
+                <CompanyDetailsCard
+                  data={{
+                    companyName: hero.companyName,
+                    companyDescription: hero.companyDescription,
+                    addresses: hero.addresses,
+                  }}
+                />
               </section>
 
               <aside className="space-y-8">
                 <Gallery data={gallery} onImageClick={handleImageClick} />
+                <Insights data={insights} logoImage={assets.logoImage} />
               </aside>
             </div>
           </CardContent>

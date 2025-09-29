@@ -1,4 +1,4 @@
-import { Building2, CalendarClock, MapPin, Truck } from "lucide-react";
+﻿import { Building2, CalendarClock, MapPin, Truck } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import type { HeroConfig, TagIconKey } from "@/data/businessCard";
 import { cn } from "@/lib/utils";
@@ -31,43 +31,20 @@ const Hero = ({ data }: HeroProps) => {
         </div>
       </header>
 
-      <div className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm">
-        <div className="flex items-start gap-4">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-            <Building2 className="h-6 w-6" aria-hidden />
-          </div>
-          <div className="space-y-4">
-            <div>
-              <h2 className="text-xl font-semibold leading-tight text-black">{data.companyName}</h2>
-              <p className="mt-2 text-sm text-neutral-700">{data.companyDescription}</p>
-            </div>
-            <div className="space-y-3 text-sm text-neutral-800">
-              {data.addresses.map((address) => (
-                <div key={address.label}>
-                  <span className="font-semibold text-primary">{address.label}</span>
-                  <p className="mt-1 leading-relaxed">{address.value}</p>
-                </div>
-              ))}
-            </div>
-            <div className="flex flex-wrap items-center gap-2">
-              {data.tags.map((tag) => {
-                const Icon = tag.icon ? tagIconMap[tag.icon] : null;
-                return (
-                  <Badge
-                    key={tag.label}
-                    variant={tag.variant}
-                    className={cn(
-                      tag.variant === "outline" ? "gap-1 text-primary" : undefined,
-                    )}
-                  >
-                    {Icon ? <Icon className="h-3.5 w-3.5" aria-hidden /> : null}
-                    {tag.label}
-                  </Badge>
-                );
-              })}
-            </div>
-          </div>
-        </div>
+      <div className="flex flex-wrap items-center gap-2">
+        {data.tags.map((tag) => {
+          const Icon = tag.icon ? tagIconMap[tag.icon] : null;
+          return (
+            <Badge
+              key={tag.label}
+              variant={tag.variant}
+              className={cn(tag.variant === "outline" ? "gap-1 text-primary" : undefined)}
+            >
+              {Icon ? <Icon className="h-3.5 w-3.5" aria-hidden /> : null}
+              {tag.label}
+            </Badge>
+          );
+        })}
       </div>
     </div>
   );
@@ -98,5 +75,38 @@ const RepresentativePanel = ({ data }: RepresentativePanelProps) => {
   );
 };
 
-export { RepresentativePanel };
+interface CompanyDetailsCardProps {
+  data: Pick<HeroConfig, "companyName" | "companyDescription" | "addresses">;
+}
+
+const CompanyDetailsCard = ({ data }: CompanyDetailsCardProps) => {
+  return (
+    <div className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm">
+      <div className="flex items-start gap-4">
+        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+          <Building2 className="h-6 w-6" aria-hidden />
+        </div>
+        <div className="space-y-4">
+          <div>
+            <h2 className="text-xl font-semibold leading-tight text-black">{data.companyName}</h2>
+            <p className="mt-2 text-sm text-neutral-700">{data.companyDescription}</p>
+          </div>
+          <div className="space-y-3 text-sm text-neutral-800">
+            {data.addresses.map((address) => (
+              <div key={address.label}>
+                <span className="font-semibold text-primary">{address.label}</span>
+                <p className="mt-1 leading-relaxed">{address.value}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export { RepresentativePanel, CompanyDetailsCard };
 export default Hero;
+
+
+
