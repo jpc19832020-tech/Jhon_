@@ -11,27 +11,8 @@ import { businessCardConfig } from "@/data/businessCard";
 const composeGmailUrl = (address: string, subject: string, body: string) =>
   `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(address)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-const createVCardPayload = () => {
-  const { vcard } = businessCardConfig;
-
-  return [
-    "BEGIN:VCARD",
-    "VERSION:3.0",
-    `N:${vcard.lastName};${vcard.firstName};;;`,
-    `FN:${vcard.fullName}`,
-    `ORG:${vcard.organization}`,
-    `TITLE:${vcard.title}`,
-    `EMAIL;TYPE=HOME:${vcard.email}`,
-    `TEL;TYPE=CELL:${vcard.phone}`,
-    `URL:${vcard.url}`,
-    `ADR:;;${vcard.address}`,
-    `NOTE:${vcard.note}`,
-    "END:VCARD",
-  ].join("\n");
-};
-
 const VirtualBusinessCard = () => {
-  const { assets, hero, contact, gallery, insights, closing, vcard } = businessCardConfig;
+  const { assets, hero, contact, gallery, insights, closing } = businessCardConfig;
   const [feedback, setFeedback] = useState<string | null>(null);
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [focusedSlideIndex, setFocusedSlideIndex] = useState(0);
@@ -51,17 +32,7 @@ const VirtualBusinessCard = () => {
     setFeedback(message);
   }, []);
 
-  const handleDownloadVCard = useCallback(() => {
-    const vcardContent = createVCardPayload();
-    const blob = new Blob([vcardContent], { type: "text/vcard" });
-    const link = URL.createObjectURL(blob);
-    const anchor = document.createElement("a");
-    anchor.href = link;
-    anchor.download = vcard.downloadName;
-    anchor.click();
-    URL.revokeObjectURL(link);
-    setFeedback(contact.feedback.download);
-  }, [contact.feedback.download, vcard.downloadName]);
+  
 
   const handleShare = useCallback(async () => {
     const shareUrl = window.location.href;
@@ -128,6 +99,28 @@ const VirtualBusinessCard = () => {
           };
         }
 
+        if (action.key === "corporateEmail") {
+          return {
+            ...action,
+            onClick: () =>
+              openExternal(
+                composeGmailUrl(
+                  contact.corporateEmail.address,
+                  contact.corporateEmail.subject,
+                  contact.corporateEmail.body,
+                ),
+                action.feedback,
+              ),
+          };
+        }
+
+        if (action.key === "linkedin") {
+          return {
+            ...action,
+            onClick: () => openExternal(action.detail, action.feedback),
+          };
+        }
+
         return {
           ...action,
           onClick: () => openExternal(contact.websiteUrl, action.feedback),
@@ -138,6 +131,9 @@ const VirtualBusinessCard = () => {
       contact.email.address,
       contact.email.body,
       contact.email.subject,
+      contact.corporateEmail.address,
+      contact.corporateEmail.subject,
+      contact.corporateEmail.body,
       contact.websiteUrl,
       contact.whatsappMessage,
       contact.whatsappNumber,
@@ -185,7 +181,7 @@ const VirtualBusinessCard = () => {
             />
             <div className="space-y-1">
               <p className="text-xs uppercase tracking-[0.3em] text-white/70">{hero.badge}</p>
-              <p className="text-lg font-semibold">{hero.name}</p>
+              <p className="text-2xl font-semibold sm:text-3xl">{hero.name}</p>
             </div>
           </div>
 
@@ -198,7 +194,6 @@ const VirtualBusinessCard = () => {
                   actions={contactActions}
                   sectionLabel={contact.sectionLabel}
                   quickActions={contact.quickActions}
-                  onDownload={handleDownloadVCard}
                   onShare={handleShare}
                 />
                 <CompanyDetailsCard

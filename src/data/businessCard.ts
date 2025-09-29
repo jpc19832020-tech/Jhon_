@@ -1,7 +1,7 @@
 ﻿const basePath = import.meta.env.BASE_URL;
 
-export type ContactActionKey = "phone" | "email" | "website";
-export type ContactActionIcon = "Phone" | "Mail" | "Globe";
+export type ContactActionKey = "phone" | "email" | "corporateEmail" | "website" | "linkedin";
+export type ContactActionIcon = "Phone" | "Mail" | "Globe" | "WhatsApp" | "LinkedIn";
 export type TagIconKey = "MapPin" | "CalendarClock";
 
 export interface ContactActionConfig {
@@ -32,6 +32,11 @@ export interface ContactConfig {
   whatsappNumber: string;
   whatsappMessage: string;
   email: {
+    address: string;
+    subject: string;
+    body: string;
+  };
+  corporateEmail: {
     address: string;
     subject: string;
     body: string;
@@ -133,17 +138,16 @@ export const businessCardConfig: BusinessCardConfig = {
     title: "Gerente comercial - Perú | FOTON",
     companyName: "Foton International Trade Co., Ltd.",
     companyDescription:
-      "Estrategia comercial & Representación de Marca.",
+      "Estrategia comercial & Representante de Marca.",
     addresses: [
       { label: "Dirección Beijing", value: "No.15, Shayang Rd., Changping, Beijing 102206, China" },
       { label: "Dirección Lima", value: "Av. Guardia Civil 1321, Int. 802, Surquillo, Lima, Perú" },
     ],
     tags: [
-      { label: "Perú", variant: "default" },
-      { label: "Lima", variant: "outline", icon: "MapPin" },
+      
     ],
     specialization: {
-      label: "Representante",
+      label: "Representante de:",
       items: [
         { label: "PICKUP", description: "" },
         { label: "VAN", description: "" },
@@ -160,7 +164,7 @@ export const businessCardConfig: BusinessCardConfig = {
         key: "phone",
         label: "Teléfono",
         detail: "+51 937 375 605",
-        icon: "Phone",
+        icon: "WhatsApp",
         feedback: "Abriendo WhatsApp",
       },
       {
@@ -171,11 +175,25 @@ export const businessCardConfig: BusinessCardConfig = {
         feedback: "Redactando correo",
       },
       {
+        key: "corporateEmail",
+        label: "Correo corporativo",
+        detail: "jhonperez@foton.com.cn",
+        icon: "Mail",
+        feedback: "Abriendo correo corporativo",
+      },
+      {
         key: "website",
         label: "Sitio web",
         detail: "www.fotonmotor.com",
         icon: "Globe",
         feedback: "Abriendo sitio web",
+      },
+      {
+        key: "linkedin",
+        label: "LinkedIn",
+        detail: "https://www.linkedin.com/in/jhon-p%C3%A9rez-cubas-a4193144/",
+        icon: "LinkedIn",
+        feedback: "Abriendo LinkedIn",
       },
     ],
     whatsappNumber: "51937375605",
@@ -185,6 +203,11 @@ export const businessCardConfig: BusinessCardConfig = {
       address: "jhoncarlosperezcubas@gmail.com",
       subject: "Consulta - Tarjeta FOTON",
       body: "Hola Jhon,\n\nTe contacto desde tu tarjeta de presentación.\n\nGracias,",
+    },
+    corporateEmail: {
+      address: "jhonperez@foton.com.cn",
+      subject: "Consulta - Tarjeta FOTON (correo corporativo)",
+      body: "Hola Jhon,\n\nTe escribo desde la tarjeta de presentación utilizando el correo corporativo.\n\nGracias,",
     },
     websiteUrl: "https://www.fotonmotor.com",
     quickActions: {
@@ -225,7 +248,7 @@ export const businessCardConfig: BusinessCardConfig = {
     ],
     cta: {
       label: "Probar vista 720°",
-      url: "https://zhanting2023.foton.com.cn/p4_9/",
+      url: "https://jpc19832020-tech.github.io/Jhon_p_vision/",
     },
   },
   insights: {
