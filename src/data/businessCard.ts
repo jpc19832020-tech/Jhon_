@@ -128,7 +128,7 @@ export const businessCardConfig: BusinessCardConfig = {
     },
   },
   hero: {
-    badge: "",
+    badge: "FOTON Perú",
     name: "Jhon Carlos P├⌐rez Cubas",
     title: "Gerente comercial - Per├║ | FOTON",
     companyName: "Foton International Trade Co., Ltd.",
@@ -136,7 +136,7 @@ export const businessCardConfig: BusinessCardConfig = {
       "Estrategia comercial & Representaci├│n de Marca.",
     addresses: [
       { label: "Direcci├│n Beijing", value: "No.15, Shayang Rd., Changping, Beijing 102206, China" },
-      { label: "Direcci├│n Lima", value: "Av. Guardia civil 1321, Int. 802, Surquillo, Lima, Per├║" },
+      { label: "Direcci├│n Lima", value: "Av. Guardia Civil 1321, Int. 802, Surquillo, Lima, Per├║" },
     ],
     tags: [
       { label: "Per├║", variant: "default" },
